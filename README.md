@@ -16,8 +16,8 @@ A crappy Discord bot downloading memes from Reddit and sending them on Discord.\
 ### To-do List
 
 - [ ] Subreddit filter (avoid NSFW subreddits)
-- [ ] Make the bot run on a hosted server
-- [ ] Make a list of subreddits with good memes (or jokes)
-- [ ] Find a better way to keep track of downloaded files
-- [ ] Handle photos from Imgur
+- [x] Make the bot run on a hosted server
+- [x] Make a list of subreddits with good memes (or jokes)
+- [x] Find a better way to keep track of downloaded files
+- [x] Handle photos from Imgur
 - [x] Add new feature to send text from reddit submission
