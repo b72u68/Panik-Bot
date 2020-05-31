@@ -4,7 +4,7 @@ A crappy Discord bot downloading memes from Reddit and sending them on Discord.\
 
 ### Instructions
 
-- Required Python libs: praw, configparser, discord, requests (requests lib is optional if you want to download images to your machine)
+- Required Python libs: praw, configparser, discord
 - Create Reddit app and edit keys in reddit_conf.ini
 - Create Discord Bot and edit token in discord_conf.ini
 
