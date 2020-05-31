@@ -1,9 +1,6 @@
 import praw
 
 import configparser
-##import pathlib
-##import requests
-##import os
 
 class redditSubmissionScraper:
 
@@ -42,21 +39,13 @@ class redditSubmissionScraper:
     # get image url linked to reddit submission
     def get_image(self):
         sent_images = self.get_sent('image_log.txt')['files']
-
-        ##current_path = pathlib.Path().absolute()
         submissions = self.reddit.subreddit(self.subreddit).new(limit=None)
 
         try:
             for submission in submissions:
                 if not submission.stickied and submission.url.endswith(('.jpg', '.png', 'jpeg')):
-                    ##filename = submission.url.split('/')[-1]
-                    ##file_path= os.path.join(current_path, filename)
                     url = submission.url
-                    ##if not os.path.isfile(file_path) and filename not in downloaded_images:
                     if url and url not in sent_images: 
-                        ##r = requests.get(submission.url)
-                        ##with open(file_path, 'wb') as f:
-                        ##    f.write(r.content)
                         return {'url': url, 'author': submission.author}
                     
         except:
@@ -65,7 +54,6 @@ class redditSubmissionScraper:
     # get title and text from reddit submission
     def get_content(self):
         sent_text = self.get_sent('text_log.txt')['files']
-
         submissions = self.reddit.subreddit(self.subreddit).new(limit=None)
 
         try:
@@ -80,12 +68,6 @@ class redditSubmissionScraper:
 
         except:
             return None
-
-    # get recommended subreddits based on search results
-    ##def get_rec(self, filename):
-    ##    sent_subs = redditSubmissionScraper.get_sent(filename)['subreddit']
-    ##    rec_lst = self.reddit.subreddits.recommended(subreddits=sent_subs)
-    ##    return rec_lst
     
     # get list of subreddits match with the given query
     def search_sub(self, query):

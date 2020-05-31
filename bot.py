@@ -39,7 +39,6 @@ async def on_message(message):
     # some default path/file
     
     default_memes_path = os.path.abspath('default_memes/')
-    ##current_path = pathlib.Path().absolute()
 
     no_memes = discord.File(os.path.join(default_memes_path, 'no_memes.png'), filename='no_memes.png')
     panik = discord.File(os.path.join(default_memes_path, 'panik.png'), filename='panik.png')
@@ -90,9 +89,6 @@ async def on_message(message):
         if message.content.startswith('!meme'):     # send meme in /memes directory
             subreddit = message.content[len('!meme')+1:].strip()
 
-            ##def remove_file(filename):  # remove file 
-            ##    os.remove(filename)
-
             # return reddit submission image through its url
             def get_image(subreddit):   # download image in subreddit
                 r = redditSubmissionScraper(subreddit)
@@ -121,22 +117,6 @@ async def on_message(message):
             
             image_data = get_image(subreddit)
             
-            # create a list of image downloaded to the directory
-
-            ##image_list = [x for x in os.listdir(current_path) if x.endswith(('.jpg', '.png', '.jpeg'))]
-            
-            ##if not image_list:
-            ##    await message.channel.send('`No image found in this subreddit.`')
-            ##    await message.channel.send(file=no_memes)
-            ##    return
-
-            ##else:
-            ##    image_file = os.path.abspath(os.path.join(current_path,image_list[0]))
-            ##    image = discord.File(image_file, filename=image_list[0])
-            ##    remove_file(image_file)
-            ##    await message.channel.send(file=image)                
-            ##    return
-
             if not image_data:
                 await message.channel.send('`No image found in this subreddit.`')
                 await message.channel.send(file=no_memes)
@@ -145,14 +125,6 @@ async def on_message(message):
             else:
                 url, author = image_data['url'], image_data['author']
                 await message.channel.send(f'{url}\n`Posted in r/{subreddit} by u/{author}`')
-
-                ##try:
-                ##    await client.wait_for('message', timeout=0.5)
-                ##except asyncio.exceptions.TimeoutError:
-                ##    return
-
-                ##time.sleep(0.05)
-
                 return
 
         # return reddit submission title and content
@@ -175,10 +147,6 @@ async def on_message(message):
 
                 except TypeError:
                     return None
-
-            ##def check_sub(subreddit):   # check input subreddit
-            ##    r = redditSubmissionScraper(subreddit)
-            ##    return r.check_sub()
 
             if not subreddit:
                 subreddit = 'jokes'
