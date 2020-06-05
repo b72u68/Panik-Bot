@@ -4,7 +4,7 @@ import os
 import sys
 import configparser
 import pathlib
-from redditSubmissionScraper import redditSubmissionScraper
+from reddit_debug import redditSubmissionScraper
 
 
 # supporting functions
@@ -34,13 +34,11 @@ async def on_message(message):
     channels = ['bot_spam']
     
     # some default path/file
-    default_memes_path = os.path.abspath('default_memes/')
-
-    no_memes = discord.File(os.path.join(default_memes_path, 'no_memes.png'), filename='no_memes.png')
-    panik = discord.File(os.path.join(default_memes_path, 'panik.png'), filename='panik.png')
-    kalm = discord.File(os.path.join(default_memes_path, 'kalm.png'), filename='kalm.png')
-    orange = discord.File(os.path.join(default_memes_path, 'orange.png'), filename='orange.png')
-    lifegood = discord.File(os.path.join(default_memes_path, 'lifegood.png'), filename='lifegood.png')
+    no_memes = discord.File(r'./default_memes/no_memes.png')
+    panik = discord.File(r'./default_memes/panik.png')
+    kalm = discord.File(r'./default_memes/kalm.png')
+    orange = discord.File(r'./default_memes/orange.png')
+    lifegood = discord.File(r'./default_memes/lifegood.png')
 
 
     if str(message.channel) in channels:
@@ -93,14 +91,13 @@ async def on_message(message):
                     url = data['url']
 
                     # log writing
-                    with open('image_log.txt', 'a') as f:
-                        f.write(f'{subreddit.lower()}   {url}\n')
-                        f.close()
+                    f = open('image_log.txt', 'a')
+                    f.write(f'{subreddit.lower()}   {url}\n')
+                    f.close()
 
                     return data 
 
-                except Exception as e:
-                    print(f'[-] Error Occurred: {e}')
+                except TypeError:
                     return None
 
             if not subreddit:
@@ -135,14 +132,13 @@ async def on_message(message):
                     url = data['url']
 
                     # log writing
-                    with open('text_log.txt', 'a') as f:
-                        f.write(f'{subreddit.lower()}   {url}\n')
-                        f.close()
+                    f = open('text_log.txt', 'a')
+                    f.write(f'{subreddit.lower()}   {url}\n')
+                    f.close()
 
                     return data
 
-                except Exception as e:
-                    print(f'[-] Error Occurred: {e}')
+                except TypeError:
                     return None
 
             if not subreddit:
