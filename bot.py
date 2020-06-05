@@ -33,11 +33,9 @@ async def on_ready():
 async def on_message(message):
 
     # channels name
-    
     channels = ['bot_spam']
     
     # some default path/file
-    
     default_memes_path = os.path.abspath('default_memes/')
 
     no_memes = discord.File(os.path.join(default_memes_path, 'no_memes.png'), filename='no_memes.png')
@@ -53,7 +51,6 @@ async def on_message(message):
             return
 
         # commands for channel
-
         guide = '''```Panik Bot Commands Guide
     \'!h\'                          get bot commands 
     \'!panik\'                      send Panik meme
@@ -98,13 +95,14 @@ async def on_message(message):
                     url = data['url']
 
                     # log writing
-                    f = open('image_log.txt', 'a')
-                    f.write(f'{subreddit.lower()}   {url}\n')
-                    f.close()
+                    with open('image_log.txt', 'a') as f:
+                        f.write(f'{subreddit.lower()}   {url}\n')
+                        f.close()
 
                     return data 
 
-                except TypeError:
+                except Exception as e:
+                    print(f'[-] Error Occurred: {e}')
                     return None
 
             if not subreddit:
@@ -139,13 +137,14 @@ async def on_message(message):
                     url = data['url']
 
                     # log writing
-                    f = open('text_log.txt', 'a')
-                    f.write(f'{subreddit.lower()}   {url}\n')
-                    f.close()
+                    with open('text_log.txt', 'a') as f:
+                        f.write(f'{subreddit.lower()}   {url}\n')
+                        f.close()
 
                     return data
 
-                except TypeError:
+                except Exception as e:
+                    print(f'[-] Error Occurred: {e}')
                     return None
 
             if not subreddit:
