@@ -1,11 +1,9 @@
 # import libraries
 import discord
-
 import os
 import sys
 import configparser
 import pathlib
-
 from redditSubmissionScraper import redditSubmissionScraper
 
 
