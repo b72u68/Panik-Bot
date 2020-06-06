@@ -10,7 +10,7 @@ from reddit_debug import redditSubmissionScraper
 # supporting functions
 def read_token():           # read token from token.init
     config = configparser.ConfigParser()
-    config.read('discord_conf.ini')
+    config.read(r'./.config/discord_conf.ini')
     return config['DISCORD']['bot_token']
 
 

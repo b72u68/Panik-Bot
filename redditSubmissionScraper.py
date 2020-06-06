@@ -7,7 +7,7 @@ class redditSubmissionScraper:
     def __init__(self, subreddit=None):
         self.subreddit = subreddit
         config = configparser.ConfigParser()
-        config.read('reddit_conf.ini')
+        config.read(r'./.config/reddit_conf.ini')
         self.reddit = praw.Reddit(client_id=config['REDDIT']['client_id'], client_secret=config['REDDIT']['client_secret'], user_agent='Reddit Submission Scraper by /u/b72u68')
 
     # check subreddit of self
