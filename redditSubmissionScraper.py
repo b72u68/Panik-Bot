@@ -1,4 +1,5 @@
 import praw
+import os
 import configparser
 
 class redditSubmissionScraper:
@@ -13,7 +14,8 @@ class redditSubmissionScraper:
     def check_sub(self):
         try:
             self.reddit.subreddits.search_by_name(self.subreddit, exact=True)
-        except:
+        except Exception as e:
+            print(f'[-] Error Occurred: {e}')
             return False 
         return True 
 
@@ -30,8 +32,8 @@ class redditSubmissionScraper:
                 if sent_data.split()[0].strip() not in sent_sub:
                     sent_sub.append(sent_data.split()[0].strip())
                 sent_file.append(sent_data.split()[1].strip())
-        except:
-            pass
+        except Exception as e:
+            print(f'[-] Error Occurred: {e}')
 
         return {'subreddit': sent_sub, 'files': sent_file} 
 
@@ -47,7 +49,8 @@ class redditSubmissionScraper:
                     if url and url not in sent_images: 
                         return {'url': url, 'author': submission.author}
                     
-        except:
+        except Exception as e:
+            print(f'[-] Error Occurred: {e}')
             return None
 
     # get title and text from reddit submission
@@ -65,7 +68,8 @@ class redditSubmissionScraper:
                         content = submission.selftext
                         return {'url': url, 'author': author, 'title': title, 'content': content}
 
-        except:
+        except Exception as e:
+            print(f'[-] Error Occurred: {e}')
             return None
     
     # get list of subreddits match with the given query
