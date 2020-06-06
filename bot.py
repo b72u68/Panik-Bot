@@ -91,9 +91,9 @@ async def on_message(message):
                     url = data['url']
 
                     # log writing
-                    f = open('image_log.txt', 'a')
-                    f.write(f'{subreddit.lower()}   {url}\n')
-                    f.close()
+                    with open('image_log.txt', 'a') as f:
+                        f.write(f'{subreddit.lower()}   {url}\n')
+                        f.close()
 
                     return data 
 
@@ -132,9 +132,9 @@ async def on_message(message):
                     url = data['url']
 
                     # log writing
-                    f = open('text_log.txt', 'a')
-                    f.write(f'{subreddit.lower()}   {url}\n')
-                    f.close()
+                    with open('text_log.txt', 'a') as f:
+                        f.write(f'{subreddit.lower()}   {url}\n')
+                        f.close()
 
                     return data
 
