@@ -4,7 +4,7 @@ import os
 import sys
 import configparser
 import pathlib
-from reddit_debug import redditSubmissionScraper
+from redditSubmissionScraper import redditSubmissionScraper
 
 
 # supporting functions
