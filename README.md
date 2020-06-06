@@ -6,13 +6,13 @@ A crappy Discord bot downloading memes from Reddit and sending them on Discord.\
 
 - Python3 is required for discord.py library
 - Required Python libs: praw, configparser, discord. Run `pip install -r requirements.txt` to install libraries
-- Create Reddit app and edit keys in reddit_conf.ini
-- Create Discord Bot and edit token in discord_conf.ini
+- Create Reddit app and edit keys in `reddit_conf.ini` in `.config` directory
+- Create Discord Bot and edit token in `discord_conf.ini` in `.config` directory
 
 ### Usage
 
 - Run the bot LOCALLY. This bot cannot be hosted on server
-- Type !help to read the bot commands
+- Type `!help` or `!` to read the bot commands
 
 ### To-do List
 
