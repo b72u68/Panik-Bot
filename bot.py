@@ -97,7 +97,8 @@ async def on_message(message):
 
                     return data 
 
-                except TypeError:
+                except Exception as e:
+                    print(f'[-] Error Occurred: {e}')
                     return None
 
             if not subreddit:
@@ -138,7 +139,8 @@ async def on_message(message):
 
                     return data
 
-                except TypeError:
+                except Exception as e:
+                    print(f'[-] Error Occurred: {e}')
                     return None
 
             if not subreddit:
