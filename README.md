@@ -12,7 +12,13 @@ A crappy Discord bot downloading memes from Reddit and sending them on Discord.\
 ### Usage
 
 - Run the bot LOCALLY. This bot cannot be hosted on server
-- Type `!help` or `!` to read the bot commands
+- Bot Commands
+    * `!h` or `!`: Get command menu
+    * `!panik`: Send Panik meme
+    * `!kalm`: Send Kalm meme
+    * `!meme <subreddit>`: Send meme from subreddit (can send any images from post)
+    * `!joke <subreddit>`: Send joke from subreddit (can send post content)
+    * `!s <query>`: Send list of subreddits match to query
 
 ### To-do List
 
