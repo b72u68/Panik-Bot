@@ -32,6 +32,7 @@ class redditSubmissionScraper:
                 if sent_data.split()[0].strip() not in sent_sub:
                     sent_sub.append(sent_data.split()[0].strip())
                 sent_file.append(sent_data.split()[1].strip())
+
         except Exception as e:
             print(f'[-] Error Occurred: {e}')
 
