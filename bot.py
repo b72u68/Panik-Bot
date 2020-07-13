@@ -54,9 +54,9 @@ async def on_message(message):
     \'!meme <subreddit>\'           send meme from subreddit
     \'!joke <subreddit>\'           send joke from subreddit
     \'!s <query>\'                  search for subreddits```'''
-    
+
         commands = ['!h', '!', '!kalm', '!panik', '!meme', '!joke', '!s']
-        
+
         if message.content.startswith('!') and message.content.split()[0] not in commands:  # check entered command
             await message.channel.send('`Invalid command.`')
             await message.channel.send(guide)
@@ -86,7 +86,7 @@ async def on_message(message):
             def get_image(subreddit):   # download image in subreddit
                 r = redditSubmissionScraper(subreddit)
                 data = r.get_image()
-                
+
                 try:
                     url = data['url']
 
@@ -108,9 +108,9 @@ async def on_message(message):
                     await message.channel.send('`Invalid subreddit.`')
                     await message.channel.send(file=panik)
                     return
-            
+
             image_data = get_image(subreddit)
-            
+
             if not image_data:
                 await message.channel.send('`No image found in this subreddit.`')
                 await message.channel.send(file=no_memes)
